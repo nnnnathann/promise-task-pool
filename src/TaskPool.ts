@@ -45,7 +45,7 @@ export class TaskPool {
     delete this.tasks[String(id)];
     this.update();
   }
-  update(): void {
+  private update(): void {
     if (this.inProgressCount() < this.options.concurrency) {
       const id = this.firstQueued();
       if (id) {
@@ -55,10 +55,10 @@ export class TaskPool {
       }
     }
   }
-  inProgressCount(): number {
+  private inProgressCount(): number {
     return Object.values(this.tasks).filter(isInProgress).length;
   }
-  firstQueued(): string | undefined {
+  private firstQueued(): string | undefined {
     return Object.entries(this.tasks)
       .filter(([, task]) => !isInProgress(task))
       .map(([id]) => String(id))[0];
