@@ -8,7 +8,24 @@ pnpm i -S promise-task-pool
 ```
 
 ```ts
+// API
+export interface QueueOptions {
+    concurrency: number;
+}
+export interface EnqueueResult<T> {
+    id: number;
+    promise: Promise<T>;
+}
+export declare class TaskPool {
+    constructor(options: QueueOptions);
+    enqueue<T>(task: () => Promise<T>): EnqueueResult<T>;
+    dequeue(id: number): void;
+    update(): void;
+    inProgressCount(): number;
+}
+```
 
+```ts
 test("queue some tasks to spell nice", async () => {
   let output = "";
   // only 2 at a time
