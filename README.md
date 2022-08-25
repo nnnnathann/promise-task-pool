@@ -20,8 +20,6 @@ export declare class TaskPool {
     constructor(options: QueueOptions);
     enqueue<T>(task: () => Promise<T>): EnqueueResult<T>;
     dequeue(id: number): void;
-    update(): void;
-    inProgressCount(): number;
 }
 ```
 
