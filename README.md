@@ -1,7 +1,7 @@
 Task Pool
 ======
 
-Sit by the pool and relax knowing that your tasks won't go over the limit!
+Sit by the pool and relax knowing that your tasks won't go into the deep end!
 
 ```
 pnpm i -S promise-task-pool
